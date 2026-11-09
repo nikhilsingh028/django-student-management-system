@@ -1,37 +1,58 @@
 {% extends "students/base.html" %}
 
-
 {% block title %}
-    Student List
+Student List
 {% endblock %}
 
 
 {% block content %}
 
-    <div class="card">
+<div class="card">
 
-        <h1>All Students</h1>
+    <h1>All Students</h1>
 
-        {% for student in students %}
+    <a href="{% url 'student_create' %}">
+        <button type="button">Add New Student</button>
+    </a>
 
-            <div class="student-item">
+    <hr>
 
-                <h3>{{ student.name }}</h3>
+    {% for student in students %}
 
-                <p>Course: {{ student.course }}</p>
+        <div class="student-item">
 
-                <a href="{% url 'student_detail' student.id %}">
-                    View Details
-                </a>
+            <h3>{{ student.name }}</h3>
 
-            </div>
+            <p>Email: {{ student.email }}</p>
 
-        {% empty %}
+            <p>Age: {{ student.age }}</p>
 
-            <p>No students available.</p>
+            <p>Course: {{ student.course }}</p>
 
-        {% endfor %}
+            <a href="{% url 'student_detail' student.id %}">
+                View Details
+            </a>
 
-    </div>
+            |
+
+            <a href="{% url 'student_update' student.id %}">
+                Edit
+            </a>
+
+            |
+
+            <a href="{% url 'student_delete' student.id %}">
+                Delete
+            </a>
+
+        </div>
+
+    {% empty %}
+
+        <p>No students found.</p>
+
+    {% endfor %}
+
+</div>
 
 {% endblock %}

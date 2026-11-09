@@ -1,6 +1,9 @@
-from django.shortcuts import render
-from .models import StudentProfile
+from django.shortcuts import render, redirect, get_object_or_404
 
+from .models import Student, StudentProfile
+
+
+# HOME PAGE
 def home(request):
 
     context = {
@@ -21,6 +24,7 @@ def home(request):
     return render(request, "students/home.html", context)
 
 
+# ABOUT PAGE
 def about(request):
 
     context = {
@@ -31,30 +35,10 @@ def about(request):
     return render(request, "students/about.html", context)
 
 
+# READ: DISPLAY ALL STUDENTS
 def student_list(request):
 
-    students = [
-        {
-            "id": 1,
-            "name": "Rahul",
-            "course": "Python"
-        },
-        {
-            "id": 2,
-            "name": "Aman",
-            "course": "Java"
-        },
-        {
-            "id": 3,
-            "name": "Priya",
-            "course": "Django"
-        },
-        {
-            "id": 4,
-            "name": "Nikhil",
-            "course": "DevOps"
-        }
-    ]
+    students = Student.objects.all().order_by("id")
 
     context = {
         "students": students
@@ -63,39 +47,10 @@ def student_list(request):
     return render(request, "students/student_list.html", context)
 
 
+# READ: DISPLAY ONE STUDENT
 def student_detail(request, student_id):
 
-    students = {
-        1: {
-            "name": "Rahul",
-            "age": 21,
-            "course": "Python"
-        },
-        2: {
-            "name": "Aman",
-            "age": 22,
-            "course": "Java"
-        },
-        3: {
-            "name": "Priya",
-            "age": 20,
-            "course": "Django"
-        },
-        4: {
-            "name": "Nikhil",
-            "age": 21,
-            "course": "DevOps"
-        }
-    }
-
-    student = students.get(student_id)
-
-    if student is None:
-        return render(
-            request,
-            "students/student_not_found.html",
-            status=404
-        )
+    student = get_object_or_404(Student, id=student_id)
 
     context = {
         "student": student
@@ -108,6 +63,130 @@ def student_detail(request, student_id):
     )
 
 
+# CREATE: ADD A STUDENT
+def student_create(request):
+
+    if request.method == "POST":
+
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        age = request.POST.get("age", "").strip()
+        course = request.POST.get("course", "").strip()
+
+        if not all([name, email, age, course]):
+            return render(
+                request,
+                "students/student_form.html",
+                {"error": "Please fill in all fields."}
+            )
+
+        if not age.isdigit():
+            return render(
+                request,
+                "students/student_form.html",
+                {"error": "Age must be a positive whole number."}
+            )
+
+        if Student.objects.filter(email=email).exists():
+            return render(
+                request,
+                "students/student_form.html",
+                {"error": "This email already exists."}
+            )
+
+        Student.objects.create(
+            name=name,
+            email=email,
+            age=int(age),
+            course=course
+        )
+
+        return redirect("student_list")
+
+    return render(request, "students/student_form.html")
+
+
+# UPDATE: EDIT A STUDENT
+def student_update(request, student_id):
+
+    student = get_object_or_404(Student, id=student_id)
+
+    if request.method == "POST":
+
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        age = request.POST.get("age", "").strip()
+        course = request.POST.get("course", "").strip()
+
+        if not all([name, email, age, course]):
+            return render(
+                request,
+                "students/student_form.html",
+                {
+                    "student": student,
+                    "error": "Please fill in all fields."
+                }
+            )
+
+        if not age.isdigit():
+            return render(
+                request,
+                "students/student_form.html",
+                {
+                    "student": student,
+                    "error": "Age must be a positive whole number."
+                }
+            )
+
+        duplicate_email = Student.objects.filter(
+            email=email
+        ).exclude(id=student.id).exists()
+
+        if duplicate_email:
+            return render(
+                request,
+                "students/student_form.html",
+                {
+                    "student": student,
+                    "error": "This email already exists."
+                }
+            )
+
+        student.name = name
+        student.email = email
+        student.age = int(age)
+        student.course = course
+
+        student.save()
+
+        return redirect("student_list")
+
+    return render(
+        request,
+        "students/student_form.html",
+        {"student": student}
+    )
+
+
+# DELETE: DELETE A STUDENT
+def student_delete(request, student_id):
+
+    student = get_object_or_404(Student, id=student_id)
+
+    if request.method == "POST":
+
+        student.delete()
+
+        return redirect("student_list")
+
+    return render(
+        request,
+        "students/student_confirm_delete.html",
+        {"student": student}
+    )
+
+
+# MEDIA: UPLOAD STUDENT PROFILE
 def upload_profile(request):
 
     message = ""
