@@ -1,0 +1,124 @@
+/* General page styling */
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+/* Navbar */
+
+.navbar {
+    background-color: #172554;
+    color: white;
+
+    padding: 20px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+
+/* Main container */
+
+.container {
+    width: 80%;
+    margin: 30px auto;
+}
+
+
+/* Hero section */
+
+.hero {
+    background-color: #dbeafe;
+
+    padding: 40px;
+    text-align: center;
+
+    border-radius: 10px;
+}
+
+
+.hero h1 {
+    color: #1e3a8a;
+}
+
+
+/* Cards */
+
+.card {
+    background-color: white;
+
+    padding: 25px;
+    margin-top: 25px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Buttons */
+
+button {
+    background-color: #2563eb;
+    color: white;
+
+    border: none;
+    padding: 12px 20px;
+
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+
+/* Student items */
+
+.student-item {
+    padding: 15px;
+    margin-top: 10px;
+
+    background-color: #f1f5f9;
+
+    border-radius: 5px;
+}
+
+
+/* Footer */
+
+.footer {
+    background-color: #172554;
+    color: white;
+
+    text-align: center;
+    padding: 20px;
+
+    margin-top: 40px;
+}
+
+
+/* Links */
+
+a {
+    color: #2563eb;
+}

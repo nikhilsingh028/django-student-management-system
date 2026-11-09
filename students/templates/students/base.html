@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            Student Management System
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+
+    <!-- Reusable navbar -->
+    {% include "students/navbar.html" %}
+
+    <main class="container">
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+
+    <footer class="footer">
+
+        <p>Copyright 2026 | Student Management System</p>
+
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>

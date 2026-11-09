@@ -1,0 +1,23 @@
+{% extends "students/base.html" %}
+
+
+{% block title %}
+    Student Not Found
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="card">
+
+        <h1>404 - Student Not Found</h1>
+
+        <p>The requested student does not exist.</p>
+
+        <a href="{% url 'student_list' %}">
+            Go Back
+        </a>
+
+    </div>
+
+{% endblock %}

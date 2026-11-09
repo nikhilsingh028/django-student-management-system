@@ -1,0 +1,37 @@
+{% extends "students/base.html" %}
+
+
+{% block title %}
+    Student List
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="card">
+
+        <h1>All Students</h1>
+
+        {% for student in students %}
+
+            <div class="student-item">
+
+                <h3>{{ student.name }}</h3>
+
+                <p>Course: {{ student.course }}</p>
+
+                <a href="{% url 'student_detail' student.id %}">
+                    View Details
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <p>No students available.</p>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

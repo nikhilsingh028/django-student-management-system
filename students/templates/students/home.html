@@ -1,0 +1,68 @@
+{% extends "students/base.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+
+{% block content %}
+
+    <section class="hero">
+
+        <h1>{{ message }}</h1>
+
+        <p>
+            Welcome to our Student Management System.
+        </p>
+
+        <button onclick="showMessage()">
+            Click Me
+        </button>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>My Profile</h2>
+
+        <p>Name: {{ name }}</p>
+
+        <p>Age: {{ age }}</p>
+
+        <p>Course: {{ course }}</p>
+
+    </section>
+
+
+    <section class="card">
+
+        <h2>Student List</h2>
+
+        {% if students %}
+
+            <ul>
+
+                {% for student in students %}
+
+                    <li>{{ student|title }}</li>
+
+                {% empty %}
+
+                    <li>No students found.</li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% else %}
+
+            <p>No student data available.</p>
+
+        {% endif %}
+
+        <p>Total students: {{ students|length }}</p>
+
+    </section>
+
+{% endblock %}
