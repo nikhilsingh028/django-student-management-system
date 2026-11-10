@@ -5,14 +5,50 @@ from .models import Student, StudentProfile
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
 
-    list_display = ("id", "name", "email", "age", "course")
+    # Columns displayed in the list
+    list_display = (
+        "id",
+        "name",
+        "email",
+        "age",
+        "course",
+        "created_at"
+    )
 
-    search_fields = ("name", "email")
+    # Search by name and email
+    search_fields = (
+        "name",
+        "email"
+    )
 
-    list_filter = ("course",)
+    # Filters displayed on the right
+    list_filter = (
+        "course",
+        "age"
+    )
+
+    # Default ordering
+    ordering = ("name",)
+
+    # Number of records per page
+    list_per_page = 10
 
 
 @admin.register(StudentProfile)
 class StudentProfileAdmin(admin.ModelAdmin):
 
-    list_display = ("id", "name")
+    list_display = (
+        "id",
+        "name"
+    )
+
+    search_fields = (
+        "name",
+    )
+
+
+admin.site.site_header = "Student Management Admin"
+
+admin.site.site_title = "Student Admin Portal"
+
+admin.site.index_title = "Welcome to Student Management System"    
