@@ -1,30 +1,13 @@
 from django.urls import path
 from . import views
 
-
 urlpatterns = [
 
-    path("", views.home, name="home"),
+    path("", views.dashboard, name="dashboard"),
 
-    path("about/", views.about, name="about"),
+    path("students/", views.student_list, name="student_list"),
 
-     path(
-        "",
-        views.dashboard,
-        name="dashboard"
-    ),
-
-    path(
-        "students/",
-        views.student_list,
-        name="student_list"
-    ),
-
-    path(
-        "students/add/",
-        views.student_create,
-        name="student_create"
-    ),
+    path("students/add/", views.student_create, name="student_create"),
 
     path(
         "students/<int:student_id>/",
