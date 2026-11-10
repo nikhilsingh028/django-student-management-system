@@ -11,18 +11,27 @@ Student Details
 
     <h1>Student Details</h1>
 
-    <p>Name: {{ student.name }}</p>
+    <p><strong>Name:</strong> {{ student.name }}</p>
 
-    <p>Email: {{ student.email }}</p>
+    <p><strong>Email:</strong> {{ student.email }}</p>
 
-    <p>Age: {{ student.age }}</p>
+    <p><strong>Age:</strong> {{ student.age }}</p>
 
-    <p>Course: {{ student.course }}</p>
+    <p><strong>Course:</strong> {{ student.course }}</p>
 
-    <p>Created: {{ student.created_at }}</p>
+    <p><strong>Phone:</strong> {{ student.phone }}</p>
+
+    <p><strong>Created:</strong> {{ student.created_at }}</p>
+
+
+    <a href="{% url 'student_update' student.id %}">
+        Edit Student
+    </a>
+
+    |
 
     <a href="{% url 'student_list' %}">
-        Back to Students
+        Back
     </a>
 
 </div>

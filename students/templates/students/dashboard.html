@@ -1,0 +1,55 @@
+{% extends "students/base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+<div class="card">
+
+    <h1>Welcome to Student Management System</h1>
+
+    <p>Manage all your student records in one place.</p>
+
+</div>
+
+
+<div class="dashboard-card">
+
+    <h2>Total Students</h2>
+
+    <h1>{{ total_students }}</h1>
+
+</div>
+
+
+<div class="card">
+
+    <h2>Recently Added Students</h2>
+
+    {% for student in recent_students %}
+
+        <div class="student-item">
+
+            <h3>{{ student.name }}</h3>
+
+            <p>{{ student.email }}</p>
+
+            <a href="{% url 'student_detail' student.id %}">
+                View Details
+            </a>
+
+        </div>
+
+    {% empty %}
+
+        <p>No students registered yet.</p>
+
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

@@ -12,7 +12,7 @@
 
     <title>
         {% block title %}
-            Student Management System
+        Student Management System
         {% endblock %}
     </title>
 
@@ -23,8 +23,24 @@
 
 <body>
 
-    <!-- Reusable navbar -->
-    {% include "students/navbar.html" %}
+    <nav class="navbar">
+
+        <h2>Student Management</h2>
+
+        <div class="nav-links">
+
+            <a href="{% url 'dashboard' %}">Dashboard</a>
+
+            <a href="{% url 'student_list' %}">Students</a>
+
+            <a href="{% url 'student_create' %}">Add Student</a>
+
+            <a href="/admin/">Admin</a>
+
+        </div>
+
+    </nav>
+
 
     <main class="container">
 
@@ -33,13 +49,12 @@
 
     </main>
 
+
     <footer class="footer">
 
-        <p>Copyright 2026 | Student Management System</p>
+        <p>Student Management System | Built with Django</p>
 
     </footer>
-
-    <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 

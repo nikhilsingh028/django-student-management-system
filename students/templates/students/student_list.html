@@ -1,7 +1,7 @@
 {% extends "students/base.html" %}
 
 {% block title %}
-Student List
+All Students
 {% endblock %}
 
 
@@ -11,11 +11,24 @@ Student List
 
     <h1>All Students</h1>
 
-    <a href="{% url 'student_create' %}">
-        <button type="button">Add New Student</button>
+    <a href="{% url 'student_create' %}" class="btn">
+        Add New Student
     </a>
 
-    <hr>
+
+    <form method="GET" class="search-form">
+
+        <input
+            type="text"
+            name="q"
+            placeholder="Search by name, email or course"
+            value="{{ query }}"
+        >
+
+        <button type="submit">Search</button>
+
+    </form>
+
 
     {% for student in students %}
 
@@ -30,7 +43,7 @@ Student List
             <p>Course: {{ student.course }}</p>
 
             <a href="{% url 'student_detail' student.id %}">
-                View Details
+                Details
             </a>
 
             |
