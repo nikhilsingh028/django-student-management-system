@@ -3,6 +3,7 @@ from django.db.models import Q, Count, Avg
 
 from .models import Student, Teacher
 from .forms import StudentForm
+from .forms import ContactForm
 
 
 # DASHBOARD
@@ -156,4 +157,33 @@ def advanced_dashboard(request):
         request,
         "students/advanced_dashboard.html",
         context
+    )
+
+
+def contact_view(request):
+
+    if request.method == "POST":
+
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+
+            name = form.cleaned_data["name"]
+            email = form.cleaned_data["email"]
+            message = form.cleaned_data["message"]
+
+            print(name, email, message)
+
+            return render(
+                request,
+                "students/contact_success.html"
+            )
+
+    else:
+        form = ContactForm()
+
+    return render(
+        request,
+        "students/contact.html",
+        {"form": form}
     )
