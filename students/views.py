@@ -4,6 +4,10 @@ from django.db.models import Q, Count, Avg
 from .models import Student, Teacher
 from .forms import StudentForm
 from .forms import ContactForm
+from .forms import StudentAdmissionForm
+
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
 
 
 # DASHBOARD
@@ -205,3 +209,52 @@ def clean(self):
             )
 
     return cleaned_data
+
+
+
+def student_edit(request, student_id):
+
+    student = get_object_or_404(
+        Student,
+        id=student_id
+    )
+
+    if request.method == "POST":
+
+        form = StudentAdmissionForm(
+            request.POST,
+            instance=student
+        )
+
+        if form.is_valid():
+            form.save()
+            return redirect("student_list")
+
+    else:
+
+        form = StudentAdmissionForm(
+            instance=student
+        )
+
+    return render(
+        request,
+        "students/student_admission.html",
+        {"form": form}
+    )   
+
+
+class StudentCreateView(CreateView):
+
+    model = Student
+
+    fields = [
+        "name",
+        "email",
+        "age",
+        "course",
+        "phone"
+    ]
+
+    template_name = "students/student_form.html"
+
+    success_url = reverse_lazy("student_list")

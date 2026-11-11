@@ -39,4 +39,16 @@ urlpatterns = [
        name="contact"
     ),
 
+    path(
+      "students/<int:student_id>/edit-form/",
+       views.student_edit,
+       name="student_edit_form"
+    ),
+
+    path(
+     "students/add/",
+      StudentCreateView.as_view(),
+      name="student_create"
+    ),
+
 ]
