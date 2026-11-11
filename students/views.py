@@ -187,3 +187,21 @@ def contact_view(request):
         "students/contact.html",
         {"form": form}
     )
+
+
+def clean(self):
+
+    cleaned_data = super().clean()
+
+    age = cleaned_data.get("age")
+    course = cleaned_data.get("course")
+
+    if age is not None and course is not None:
+
+        if course.lower() == "python" and age < 18:
+
+            raise forms.ValidationError(
+                "Python course admission requires age 18 or above."
+            )
+
+    return cleaned_data
