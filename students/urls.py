@@ -33,4 +33,10 @@ urlpatterns = [
        name="advanced_dashboard"
     ),
 
+    path(
+      "contact/",
+       views.contact_view,
+       name="contact"
+    ),
+
 ]
