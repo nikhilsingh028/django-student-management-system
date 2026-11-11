@@ -51,4 +51,10 @@ urlpatterns = [
       name="student_create"
     ),
 
+    path(
+      "register/",
+       views.register_view,
+       name="register"
+    ),
+
 ]

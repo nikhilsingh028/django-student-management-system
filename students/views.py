@@ -9,6 +9,11 @@ from .forms import StudentAdmissionForm
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
+
+from .forms import RegisterForm
+
 
 # DASHBOARD
 def dashboard(request):
@@ -258,3 +263,37 @@ class StudentCreateView(CreateView):
     template_name = "students/student_form.html"
 
     success_url = reverse_lazy("student_list")
+
+
+class StudentListView(LoginRequiredMixin, ListView):
+
+    model = Student
+
+    template_name = "students/student_list.html"
+
+    context_object_name = "students"
+
+    login_url = "/accounts/login/" 
+
+
+def register_view(request):
+
+    if request.method == "POST":
+
+        form = RegisterForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect("login")
+
+    else:
+
+        form = RegisterForm()
+
+    return render(
+        request,
+        "registration/register.html",
+        {"form": form}
+    )       
