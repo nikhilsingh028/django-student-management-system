@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.db.models import Q
+from django.db.models import Q, Count, Avg
 
-from .models import Student
+from .models import Student, Teacher
 from .forms import StudentForm
 
 
@@ -125,4 +125,35 @@ def student_delete(request, student_id):
         request,
         "students/student_confirm_delete.html",
         {"student": student}
+    )
+
+
+def advanced_dashboard(request):
+
+    # Q object: Python OR Java
+    students = Student.objects.filter(
+        Q(course="Python") | Q(course="Java")
+    )
+
+    # Aggregate: Overall statistics
+    statistics = Student.objects.aggregate(
+        total_students=Count("id"),
+        average_age=Avg("age")
+    )
+
+    # Annotate: Number of students per teacher
+    teachers = Teacher.objects.annotate(
+        student_count=Count("students")
+    )
+
+    context = {
+        "students": students,
+        "statistics": statistics,
+        "teachers": teachers,
+    }
+
+    return render(
+        request,
+        "students/advanced_dashboard.html",
+        context
     )
