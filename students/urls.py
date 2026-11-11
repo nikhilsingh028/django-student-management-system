@@ -27,4 +27,10 @@ urlpatterns = [
         name="student_delete"
     ),
 
+    path(
+      "advanced-dashboard/",
+       views.advanced_dashboard,
+       name="advanced_dashboard"
+    ),
+
 ]

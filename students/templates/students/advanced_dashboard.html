@@ -1,0 +1,28 @@
+<h1>Advanced Django Dashboard</h1>
+
+<h2>Student Statistics</h2>
+
+<p>Total Students: {{ statistics.total_students }}</p>
+
+<p>Average Age: {{ statistics.average_age|floatformat:1 }}</p>
+
+
+<h2>Python and Java Students</h2>
+
+{% for student in students %}
+    <p>{{ student.name }} - {{ student.course }}</p>
+{% empty %}
+    <p>No students found.</p>
+{% endfor %}
+
+
+<h2>Teacher Statistics</h2>
+
+{% for teacher in teachers %}
+    <p>
+        {{ teacher.name }}:
+        {{ teacher.student_count }} students
+    </p>
+{% empty %}
+    <p>No teachers found.</p>
+{% endfor %}
