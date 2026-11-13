@@ -331,3 +331,11 @@ def delete_session(request):
     request.session.flush()
 
     return HttpResponse("Session completely cleared!")
+
+def set_session_expiry(request):
+    request.session["username"] = "nikhil"
+
+    # Session expires after 10 minutes
+    request.session.set_expiry(600)
+
+    return HttpResponse("Session expiry set to 10 minutes!")
