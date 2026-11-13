@@ -316,3 +316,8 @@ def read_session(request):
     return HttpResponse(
         f"Username: {username}, Course: {course}"
     )
+
+def update_session(request):
+    request.session["username"] = "Rahul"
+
+    return HttpResponse("Session updated!")
