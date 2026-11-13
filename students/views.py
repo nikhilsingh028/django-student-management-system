@@ -309,3 +309,10 @@ def create_session(request):
     return HttpResponse("Session created successfully!")
 
 
+def read_session(request):
+    username = request.session.get("username", "Guest")
+    course = request.session.get("course", "No course selected")
+
+    return HttpResponse(
+        f"Username: {username}, Course: {course}"
+    )
