@@ -356,3 +356,8 @@ def create_cookie(request):
     )
 
     return response
+
+def read_cookie(request):
+    username = request.COOKIES.get("username", "Guest")
+
+    return HttpResponse(f"Welcome {username}")
