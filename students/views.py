@@ -15,6 +15,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 
 from .forms import RegisterForm
+from django.contrib import messages
 
 
 
@@ -380,3 +381,18 @@ def delete_cookie(request):
     response.delete_cookie("username")
 
     return response
+
+
+def all_messages(request):
+
+    messages.debug(request, "This is a debug message.")
+
+    messages.info(request, "Your profile was viewed.")
+
+    messages.success(request, "Student added successfully!")
+
+    messages.warning(request, "Please update your details.")
+
+    messages.error(request, "Unable to process your request.")
+
+    return redirect("message_page")

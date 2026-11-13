@@ -62,6 +62,14 @@ urlpatterns = [
     path("session/delete/", views.delete_session, name="delete_session"),
     path("session/expiry/", views.set_session_expiry, name="set_session_expiry"),
 
+
+    path("cookie/create/", views.create_cookie, name="create_cookie"),
+    path("cookie/read/", views.read_cookie, name="read_cookie"),
+    path("cookie/update/", views.update_cookie, name="update_cookie"),
+    path("cookie/delete/", views.delete_cookie, name="delete_cookie"),
+
+    path("all-messages/", views.all_messages, name="all_messages"),
+
 ]
 
 
