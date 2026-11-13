@@ -326,3 +326,8 @@ def delete_session_key(request):
     request.session.pop("course", None)
 
     return HttpResponse("Course removed from session!")
+
+def delete_session(request):
+    request.session.flush()
+
+    return HttpResponse("Session completely cleared!")
