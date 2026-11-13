@@ -321,3 +321,8 @@ def update_session(request):
     request.session["username"] = "Rahul"
 
     return HttpResponse("Session updated!")
+
+def delete_session_key(request):
+    request.session.pop("course", None)
+
+    return HttpResponse("Course removed from session!")
