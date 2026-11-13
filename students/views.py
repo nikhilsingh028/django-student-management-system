@@ -361,3 +361,22 @@ def read_cookie(request):
     username = request.COOKIES.get("username", "Guest")
 
     return HttpResponse(f"Welcome {username}")
+
+
+def update_cookie(request):
+    response = HttpResponse("Cookie updated!")
+
+    response.set_cookie(
+        "username",
+        "Rahul",
+        max_age=3600
+    )
+
+    return response
+
+def delete_cookie(request):
+    response = HttpResponse("Cookie deleted!")
+
+    response.delete_cookie("username")
+
+    return response
