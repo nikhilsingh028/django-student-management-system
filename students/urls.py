@@ -46,11 +46,8 @@ urlpatterns = [
        name="student_edit_form"
     ),
 
-    path(
-     "students/add/",
-      StudentCreateView.as_view(),
-      name="student_create"
-    ),
+ 
+   
 
     path(
       "register/",
@@ -58,5 +55,13 @@ urlpatterns = [
        name="register"
     ),
 
+    path("session/create/", views.create_session, name="create_session"),
+    path("session/read/", views.read_session, name="read_session"),
+    path("session/update/", views.update_session, name="update_session"),
+    path("session/delete-key/", views.delete_session_key, name="delete_session_key"),
+    path("session/delete/", views.delete_session, name="delete_session"),
+    path("session/expiry/", views.set_session_expiry, name="set_session_expiry"),
+
 ]
+
 

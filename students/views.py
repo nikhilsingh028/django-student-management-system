@@ -250,7 +250,7 @@ def student_edit(request, student_id):
         {"form": form}
     )   
 
-
+'''
 class StudentCreateView(CreateView):
 
     model = Student
@@ -266,6 +266,9 @@ class StudentCreateView(CreateView):
     template_name = "students/student_form.html"
 
     success_url = reverse_lazy("student_list")
+
+'''
+
 
 
 class StudentListView(LoginRequiredMixin, ListView):
@@ -339,3 +342,17 @@ def set_session_expiry(request):
     request.session.set_expiry(600)
 
     return HttpResponse("Session expiry set to 10 minutes!")
+
+
+from django.http import HttpResponse
+
+def create_cookie(request):
+    response = HttpResponse("Cookie created successfully!")
+
+    response.set_cookie(
+        "username",
+        "nikhil",
+        max_age=3600
+    )
+
+    return response
