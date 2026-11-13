@@ -4,7 +4,9 @@ from django.db.models import Q, Count, Avg
 from .models import Student, Teacher
 from .forms import StudentForm
 from .forms import ContactForm
-from .forms import StudentAdmissionForm
+
+from django.http import HttpResponse
+
 
 from django.views.generic import CreateView
 from django.urls import reverse_lazy
@@ -13,6 +15,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 
 from .forms import RegisterForm
+
 
 
 # DASHBOARD
@@ -297,3 +300,12 @@ def register_view(request):
         "registration/register.html",
         {"form": form}
     )       
+
+
+def create_session(request):
+    request.session["username"] = "nikhil"
+    request.session["course"] = "Django"
+
+    return HttpResponse("Session created successfully!")
+
+
