@@ -2,6 +2,8 @@ from django import forms
 
 from .models import Student
 
+from .models import StudentUpload
+
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -78,4 +80,16 @@ class RegisterForm(UserCreationForm):
             "email",
             "password1",
             "password2"
-        ]          
+        ]     
+
+
+class StudentUploadForm(forms.ModelForm):
+
+    class Meta:
+        model = StudentUpload
+
+        fields = [
+            "name",
+            "profile_picture",
+            "document"
+        ]             

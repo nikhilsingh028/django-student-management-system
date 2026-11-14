@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+from .models import StudentUpload
 from .models import Student
 
 
@@ -32,3 +32,7 @@ class StudentAdmin(admin.ModelAdmin):
     readonly_fields = ("created_at",)
 
     list_per_page = 10
+
+
+
+admin.site.register(StudentUpload)    

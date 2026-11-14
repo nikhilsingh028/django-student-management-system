@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q, Count, Avg
 
+from .forms import StudentUploadForm
+
+
 from .models import Student, Teacher
 from .forms import StudentForm
 from .forms import ContactForm
@@ -431,3 +434,34 @@ class StudentListView(ListView):
     context_object_name = "students"
 
     paginate_by = 10
+
+
+def upload_student_file(request):
+
+    if request.method == "POST":
+
+        form = StudentUploadForm(
+            request.POST,
+            request.FILES
+        )
+
+        if form.is_valid():
+
+            form.save()
+
+            messages.success(
+                request,
+                "Student files uploaded successfully!"
+            )
+
+            return redirect("upload_student_file")
+
+    else:
+
+        form = StudentUploadForm()
+
+    return render(
+        request,
+        "students/upload.html",
+        {"form": form}
+    )    

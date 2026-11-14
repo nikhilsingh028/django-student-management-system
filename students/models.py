@@ -60,3 +60,28 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+
+from django.db import models
+
+
+class StudentUpload(models.Model):
+
+    name = models.CharField(max_length=100)
+
+    profile_picture = models.ImageField(
+        upload_to="profile_pictures/",
+        blank=True,
+        null=True
+    )
+
+    document = models.FileField(
+        upload_to="documents/",
+        blank=True,
+        null=True
+    )
+
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name  
