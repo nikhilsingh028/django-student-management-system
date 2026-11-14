@@ -18,6 +18,7 @@ from .forms import RegisterForm
 from django.contrib import messages
 
 from django.core.paginator import Paginator
+from django.views.generic import ListView
 
 
 
@@ -419,3 +420,14 @@ def student_list(request):
         "students/student_list.html",
         {"page_obj": page_obj}
     )    
+
+
+class StudentListView(ListView):
+
+    model = Student
+
+    template_name = "students/student_list.html"
+
+    context_object_name = "students"
+
+    paginate_by = 10

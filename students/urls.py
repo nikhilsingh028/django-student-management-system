@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from .views import StudentListView
+
 
 urlpatterns = [
 
@@ -71,7 +73,11 @@ urlpatterns = [
     path("all-messages/", views.all_messages, name="all_messages"),
 
 
-   
+   path(
+     "students/",
+      StudentListView.as_view(),
+      name="student_list"
+    ),
 
 ]
 
