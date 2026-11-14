@@ -24,6 +24,9 @@ from django.core.paginator import Paginator
 from django.views.generic import ListView
 
 
+from .models import StudentUpload
+
+
 
 # DASHBOARD
 def dashboard(request):
@@ -464,4 +467,15 @@ def upload_student_file(request):
         request,
         "students/upload.html",
         {"form": form}
-    )    
+    )
+
+
+def uploaded_files(request):
+
+    uploads = StudentUpload.objects.all().order_by("-uploaded_at")
+
+    return render(
+        request,
+        "students/uploaded_files.html",
+        {"uploads": uploads}
+    )

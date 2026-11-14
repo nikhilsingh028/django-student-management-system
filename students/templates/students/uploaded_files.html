@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uploaded Files</title>
+</head>
+
+<body>
+
+    <h1>Uploaded Student Files</h1>
+
+    {% for upload in uploads %}
+
+        <h2>{{ upload.name }}</h2>
+
+        {% if upload.profile_picture %}
+
+            <h3>Profile Picture</h3>
+
+            <img
+                src="{{ upload.profile_picture.url }}"
+                alt="Profile picture"
+                width="200"
+            >
+
+        {% endif %}
+
+
+        {% if upload.document %}
+
+            <h3>Document</h3>
+
+            <a href="{{ upload.document.url }}" target="_blank">
+                View Document
+            </a>
+
+        {% endif %}
+
+        <p>Uploaded: {{ upload.uploaded_at }}</p>
+
+        <hr>
+
+    {% empty %}
+
+        <p>No uploaded files found.</p>
+
+    {% endfor %}
+
+</body>
+</html>

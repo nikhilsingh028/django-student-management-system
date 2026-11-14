@@ -85,6 +85,12 @@ urlpatterns = [
     name="upload_student_file"
     ),
 
+    path(
+    "uploaded-files/",
+    views.uploaded_files,
+    name="uploaded_files"
+    ),
+
 ]
 
 
