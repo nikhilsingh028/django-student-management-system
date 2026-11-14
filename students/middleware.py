@@ -43,3 +43,42 @@ class TimingMiddleware:
         )
 
         return response
+
+
+# process_view() Suppose you want to inspect which view Django is about to execute.    
+
+class ViewInfoMiddleware:
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        response = self.get_response(request)
+        return response
+
+    def process_view(self, request, view_func, view_args, view_kwargs):
+
+        print("View is about to execute!")
+        print("View function:", view_func.__name__)
+        print("URL arguments:", view_kwargs)
+
+        return None
+
+
+
+from django.http import HttpResponse
+
+
+class ExceptionLoggingMiddleware:
+
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        return self.get_response(request)
+
+    def process_exception(self, request, exception):
+
+        print("Exception occurred:", exception)
+
+        return None    

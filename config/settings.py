@@ -52,6 +52,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'students.middleware.SimpleMiddleware',
     'students.middleware.TimingMiddleware',
+    'students.middleware.ViewInfoMiddleware',
+    'students.middleware.ExceptionLoggingMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'

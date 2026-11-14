@@ -17,6 +17,8 @@ from django.views.generic import ListView
 from .forms import RegisterForm
 from django.contrib import messages
 
+from django.core.paginator import Paginator
+
 
 
 # DASHBOARD
@@ -396,3 +398,24 @@ def all_messages(request):
     messages.error(request, "Unable to process your request.")
 
     return redirect("message_page")
+
+
+def student_list(request):
+
+    # Get all students
+    students = Student.objects.all().order_by("id")
+
+    # Create paginator: 10 students per page
+    paginator = Paginator(students, 10)
+
+    # Get page number from URL
+    page_number = request.GET.get("page")
+
+    # Get the requested page
+    page_obj = paginator.get_page(page_number)
+
+    return render(
+        request,
+        "students/student_list.html",
+        {"page_obj": page_obj}
+    )    

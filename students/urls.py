@@ -70,6 +70,9 @@ urlpatterns = [
 
     path("all-messages/", views.all_messages, name="all_messages"),
 
+
+   
+
 ]
 
 
