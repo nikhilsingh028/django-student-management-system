@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q, Count, Avg
 
 from .forms import StudentUploadForm
+from django.db import models
 
 
 from .models import Student, Teacher
@@ -479,3 +480,16 @@ def uploaded_files(request):
         "students/uploaded_files.html",
         {"uploads": uploads}
     )
+
+class StudentProfile(models.Model):
+
+    student = models.OneToOneField(
+        Student,
+        on_delete=models.CASCADE,
+        related_name="profile"
+    )
+
+    bio = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.student.name
