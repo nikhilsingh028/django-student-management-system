@@ -92,7 +92,7 @@ def student_create(request):
         }
     )
 
-
+'''
 # READ: STUDENT DETAILS
 def student_detail(request, student_id):
 
@@ -103,7 +103,20 @@ def student_detail(request, student_id):
         "students/student_detail.html",
         {"student": student}
     )
+'''
+def student_detail(request, student_id):
 
+    try:
+        student = Student.objects.get(id=student_id)
+
+    except Student.DoesNotExist:
+        return HttpResponse("Student not found!")
+
+    return render(
+        request,
+        "students/student_detail.html",
+        {"student": student}
+    )
 
 # UPDATE: EDIT STUDENT
 def student_update(request, student_id):
