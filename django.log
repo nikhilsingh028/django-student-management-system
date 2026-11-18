@@ -1,0 +1,31 @@
+2026-11-16 20:34:17,822 - INFO - django.utils.autoreload - Watching for file changes with StatReloader
+2026-11-16 20:40:53,023 - INFO - django.utils.autoreload - Watching for file changes with StatReloader
+2026-11-16 20:41:39,372 - DEBUG - students - Debug message
+2026-11-16 20:41:39,372 - INFO - students - User opened logging demo
+2026-11-16 20:41:39,373 - WARNING - students - This is a warning
+2026-11-16 20:41:39,373 - ERROR - students - This is an error
+2026-11-16 20:41:39,399 - INFO - django.server - "GET /logging-demo/ HTTP/1.1" 200 26
+2026-11-16 20:41:39,545 - WARNING - django.request - Not Found: /favicon.ico
+2026-11-16 20:41:39,546 - WARNING - django.server - "GET /favicon.ico HTTP/1.1" 404 9246
+2026-11-19 01:16:07,419 - INFO - django.utils.autoreload - Watching for file changes with StatReloader
+2026-11-19 01:19:25,394 - INFO - django.utils.autoreload - Watching for file changes with StatReloader
+2026-11-19 01:19:50,852 - INFO - django.server - "GET /api/students/?utm_source=chatgpt.com HTTP/1.1" 200 6244
+2026-11-19 01:19:51,154 - INFO - django.server - "GET /static/rest_framework/css/prettify.css HTTP/1.1" 200 817
+2026-11-19 01:19:51,155 - INFO - django.server - "GET /static/rest_framework/css/default.css HTTP/1.1" 200 1152
+2026-11-19 01:19:51,162 - INFO - django.server - "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 200 3426
+2026-11-19 01:19:51,183 - INFO - django.server - "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 200 121457
+2026-11-19 01:19:51,203 - INFO - django.server - "GET /static/rest_framework/js/csrf.js HTTP/1.1" 200 1793
+2026-11-19 01:19:51,217 - INFO - django.server - "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 200 3796
+2026-11-19 01:19:51,227 - INFO - django.server - "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 200 39680
+2026-11-19 01:19:51,228 - INFO - django.server - "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 200 13632
+2026-11-19 01:19:51,239 - INFO - django.server - "GET /static/rest_framework/js/default.js HTTP/1.1" 200 1268
+2026-11-19 01:19:51,244 - INFO - django.server - "GET /static/rest_framework/img/grid.png HTTP/1.1" 200 1458
+2026-11-19 01:19:51,253 - INFO - django.server - "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 200 59
+2026-11-19 01:19:51,329 - INFO - django.server - "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 200 87533
+2026-11-19 01:19:51,444 - WARNING - django.request - Not Found: /favicon.ico
+2026-11-19 01:19:51,445 - WARNING - django.server - "GET /favicon.ico HTTP/1.1" 404 9512
+2026-11-19 01:20:01,900 - INFO - django.server - "GET /api/students/?format=api&utm_source=chatgpt.com HTTP/1.1" 200 6300
+2026-11-19 01:20:03,352 - INFO - django.server - "OPTIONS /api/students/?format=api&utm_source=chatgpt.com HTTP/1.1" 200 5731
+2026-11-19 01:20:05,099 - INFO - django.server - "OPTIONS /api/students/?format=api&utm_source=chatgpt.com HTTP/1.1" 200 5731
+2026-11-19 01:20:06,275 - INFO - django.server - "GET /api/students/?format=api&utm_source=chatgpt.com HTTP/1.1" 200 6300
+2026-11-19 01:20:09,256 - INFO - django.server - "GET /api/students/?format=json&utm_source=chatgpt.com HTTP/1.1" 200 329

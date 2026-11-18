@@ -4,6 +4,12 @@ from django.db.models import Q, Count, Avg
 from .forms import StudentUploadForm
 from django.db import models
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+from .serializers import StudentSerializer
+
 
 from .models import Student, Teacher
 from .forms import StudentForm
@@ -26,6 +32,10 @@ from django.views.generic import ListView
 
 
 from .models import StudentUpload
+import logging
+logger = logging.getLogger("students")
+
+from .models import StudentProfile
 
 
 
@@ -493,7 +503,7 @@ def uploaded_files(request):
         "students/uploaded_files.html",
         {"uploads": uploads}
     )
-
+'''
 class StudentProfile(models.Model):
 
     student = models.OneToOneField(
@@ -506,3 +516,30 @@ class StudentProfile(models.Model):
 
     def __str__(self):
         return self.student.name
+'''
+
+
+def logging_demo(request):
+
+    logger.debug("Debug message")
+
+    logger.info("User opened logging demo")
+
+    logger.warning("This is a warning")
+
+    logger.error("This is an error")
+
+    return HttpResponse("Logging example completed!")    
+
+
+class StudentAPIView(APIView):
+
+    def get(self, request):
+        students = Student.objects.all()
+
+        serializer = StudentSerializer(
+            students,
+            many=True
+        )
+
+        return Response(serializer.data)

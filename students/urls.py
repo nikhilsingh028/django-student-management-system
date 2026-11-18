@@ -91,6 +91,17 @@ urlpatterns = [
     name="uploaded_files"
     ),
 
+    path(
+    "logging-demo/",
+    views.logging_demo,
+    name="logging_demo"
+    ),
+
+    path(
+        "api/students/",
+        views.StudentAPIView.as_view(),
+        name="student-api"
+    ),
 ]
 
 
