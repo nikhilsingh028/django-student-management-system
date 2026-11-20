@@ -29,3 +29,27 @@
 2026-11-19 01:20:05,099 - INFO - django.server - "OPTIONS /api/students/?format=api&utm_source=chatgpt.com HTTP/1.1" 200 5731
 2026-11-19 01:20:06,275 - INFO - django.server - "GET /api/students/?format=api&utm_source=chatgpt.com HTTP/1.1" 200 6300
 2026-11-19 01:20:09,256 - INFO - django.server - "GET /api/students/?format=json&utm_source=chatgpt.com HTTP/1.1" 200 329
+2026-11-20 18:16:44,844 - INFO - django.utils.autoreload - Watching for file changes with StatReloader
+2026-11-20 18:16:53,701 - INFO - django.server - "GET / HTTP/1.1" 200 1489
+2026-11-20 18:16:53,705 - INFO - django.server - "GET /static/css/style.css HTTP/1.1" 304 0
+2026-11-20 18:16:54,725 - WARNING - django.request - Not Found: /favicon.ico
+2026-11-20 18:16:54,741 - WARNING - django.server - "GET /favicon.ico HTTP/1.1" 404 9800
+2026-11-20 18:17:03,510 - INFO - django.server - "GET /api/students/?utm_source=chatgpt.com HTTP/1.1" 200 7918
+2026-11-20 18:17:03,571 - INFO - django.server - "GET /static/rest_framework/css/bootstrap-tweaks.css HTTP/1.1" 304 0
+2026-11-20 18:17:03,572 - INFO - django.server - "GET /static/rest_framework/css/bootstrap.min.css HTTP/1.1" 304 0
+2026-11-20 18:17:03,577 - INFO - django.server - "GET /static/rest_framework/js/csrf.js HTTP/1.1" 304 0
+2026-11-20 18:17:03,586 - INFO - django.server - "GET /static/rest_framework/js/bootstrap.min.js HTTP/1.1" 304 0
+2026-11-20 18:17:03,587 - INFO - django.server - "GET /static/rest_framework/js/ajax-form.js HTTP/1.1" 304 0
+2026-11-20 18:17:03,588 - INFO - django.server - "GET /static/rest_framework/css/default.css HTTP/1.1" 304 0
+2026-11-20 18:17:03,588 - INFO - django.server - "GET /static/rest_framework/js/jquery-3.7.1.min.js HTTP/1.1" 304 0
+2026-11-20 18:17:03,589 - INFO - django.server - "GET /static/rest_framework/css/prettify.css HTTP/1.1" 304 0
+2026-11-20 18:17:03,600 - INFO - django.server - "GET /static/rest_framework/js/default.js HTTP/1.1" 304 0
+2026-11-20 18:17:03,601 - INFO - django.server - "GET /static/rest_framework/js/load-ajax-form.js HTTP/1.1" 304 0
+2026-11-20 18:17:03,601 - INFO - django.server - "GET /static/rest_framework/js/prettify-min.js HTTP/1.1" 304 0
+2026-11-20 18:17:03,784 - INFO - django.server - "GET /static/rest_framework/img/grid.png HTTP/1.1" 304 0
+2026-11-20 18:17:42,569 - WARNING - django.request - Not Found: /api/studensts/
+2026-11-20 18:17:42,572 - WARNING - django.server - "GET /api/studensts/ HTTP/1.1" 404 9809
+2026-11-20 18:18:02,255 - INFO - django.server - "GET /api/students/ HTTP/1.1" 200 7772
+2026-11-20 18:18:27,395 - INFO - django.server - "POST /api/students/ HTTP/1.1" 201 7255
+2026-11-20 18:18:47,039 - INFO - django.server - "GET /api/students/1/ HTTP/1.1" 200 8836
+2026-11-20 18:18:51,407 - INFO - django.server - "DELETE /api/students/1/ HTTP/1.1" 200 8471

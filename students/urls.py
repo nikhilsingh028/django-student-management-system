@@ -102,6 +102,12 @@ urlpatterns = [
         views.StudentAPIView.as_view(),
         name="student-api"
     ),
+
+    path(
+        "api/students/<int:pk>/",
+        views.StudentDetailAPIView.as_view(),
+        name="student-detail-api"
+    ),
 ]
 
 
